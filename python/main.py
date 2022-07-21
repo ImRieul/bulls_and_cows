@@ -26,7 +26,7 @@ def start(count: int, repetition: int):
             print(f"{result.get('result')}")
 
 
-def is_end(param_question, param_answer):
+def is_end(param_question: list, param_answer: list):
     check = []
     for index, value in enumerate(param_answer):
         if param_question[index] == value:
