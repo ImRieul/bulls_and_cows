@@ -4,7 +4,7 @@ import * as readline from 'node:readline';
 import { stdin as input, stdout as output } from 'node:process';
 
 
-function inArray(value, array) {
+function inArray(array, value) {
   return array.findIndex((x) => x === value) !== -1
 }
 
@@ -42,24 +42,25 @@ function test() {
   return result;
 }
 
-function randomNumber() {
-  return Math.floor(Math.random() * 9) + 1
+function randomNumber(start, end) {
+  start = start < 0 || 0
+  return Math.floor(Math.random() * end) + start
 }
 
-function randomNotExist(array) {
-  let number = randomNumber()
-  return inArray(number, array)? randomNotExist(array) : number
+function randomNotExist(start, end, array) {
+  let number = randomNumber(start, end);
+  return inArray(array, number)? randomNotExist(start, end, array) : number
 }
 
-function randomSample(count) {
+function randomSample(start, end, count) {
   let result = []
   Array(count).fill(0).forEach(() => {
-    result.push(randomNotExist(result))
+    result.push(randomNotExist(start, end, result))
   })  
   return result;
 }
 
-// console.log(randomSample(3))
+// console.log(randomSample(1, 9, 3))
 // console.log(`input value : ${inputString()}`)
 // console.log(`input data : ${test()}`)
 

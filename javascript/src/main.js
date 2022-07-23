@@ -13,7 +13,7 @@ function isEnd(param_question, param_answer) {
     if (param_question[index] === value) {
       return 'O'
     }
-    else if (inArray(value, param_question)) {
+    else if (inArray(param_question, value)) {
       return 'V'
     }
     else {
@@ -23,7 +23,7 @@ function isEnd(param_question, param_answer) {
 }
 
 function start(count, repetition) {
-  const question = randomSample(count);
+  const question = randomSample(1, 9, count);
 
   Array(repetition).fill(0).forEach((value, index) => {
     console.log(`${index}회를 시작합니다. 숫자를 입력해주세요`);
