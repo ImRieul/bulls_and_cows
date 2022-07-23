@@ -19,11 +19,11 @@ def start(count: int, repetition: int):
         answer = list(map(int, input().split(' ')))
         result = is_end(question, answer)
 
-        if result.get('end'):
+        if result.count('O') == 3:
             print(f"정답입니다. {answer}")
             break
         else:
-            print(f"{result.get('result')}")
+            print(f"{result}")
 
 
 def is_end(param_question: list, param_answer: list):
@@ -36,8 +36,7 @@ def is_end(param_question: list, param_answer: list):
         else:
             check.append('X')
 
-    return {'end': True if check.count('O') == 3 else False,
-            'result': check}
+    return check
 
 
 if __name__ == '__main__':

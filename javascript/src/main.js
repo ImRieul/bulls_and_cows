@@ -1,4 +1,4 @@
-import { inArray, randomSample } from "./note"
+import { inArray, input, randomSample } from "./note.js"
 
 function info() {
   console.log('숫자야구 안내를 시작합니다');
@@ -27,7 +27,17 @@ function start(count, repetition) {
 
   Array(repetition).fill(0).forEach((value, index) => {
     console.log(`${index}회를 시작합니다. 숫자를 입력해주세요`);
-    let answer = ''
-    let result = isEnd(question, anwser);
+    let answer = input().split(' ');
+    let result = isEnd(question, answer);
+    console.log(result)
+
+    if (result.fliter((x) => x === 'O').length === 3) {
+      console.log(`정답입니다. ${answer}`);
+    }
+    else {
+      console.log(result);
+    }
   })
 }
+
+start(3, 9);
